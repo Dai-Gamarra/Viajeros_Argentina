@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alojamientos en Argentina</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Fondo en color pastel */
+            color: #333; /* Texto oscuro */
+        }
+
+        header {
+            background-color: #f0e6d2; /* Encabezado en color pastel */
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #ccc; /* Borde inferior */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #fff; /* Fondo de cada elemento en blanco */
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        p {
+            margin: 0;
+            color: #555; /* Texto gris oscuro */
+        }
+
+        .filtro {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .filtro label {
+            margin-right: 10px;
+            color: #333; /* Texto oscuro */
+        }
+
+        .filtro input[type="text"],
+        .filtro select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: #fff; /* Fondo de input en blanco */
+        }
+
+        .filtro input[type="date"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            width: 200px; /* Ancho ajustable según tus necesidades */
+            background-color: #fff; /* Fondo de input en blanco */
+        }
+
+        /* Estilos para los botones */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0e6d2; /* Color de fondo pastel */
+            color: #333; /* Texto oscuro */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e0d2b5; /* Color de fondo pastel más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alojamientos en Argentina</h1>
+        <!-- Barra de búsqueda avanzada -->
+        <div class="filtro">
+            <label for="destino">Destino:</label>
+            <select id="destino">
+                <option value="">Cualquier destino</option>
+                <option value="buenos-aires">Buenos Aires</option>
+                <option value="mendoza">Mendoza</option>
+                <option value="calafate">El Calafate</option>
+                <option value="bariloche">Bariloche</option>
+                <option value="villa-la-angostura">Villa La Angostura</option>
+                <!-- Agrega más destinos según sea necesario -->
+            </select>
+
+            <label for="tipo">Tipo de alojamiento:</label>
+            <select id="tipo">
+                <option value="">Cualquier tipo</option>
+                <option value="hotel">Hotel</option>
+                <option value="apartamento">Apartamento</option>
+                <!-- Agrega más tipos de alojamiento según tus necesidades -->
+            </select>
+
+            <label for="personas">Personas:</label>
+            <input type="number" id="personas" min="1" placeholder="1">
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha">
+            <button id="buscar">Buscar</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Lista de alojamientos -->
+        <ul id="lista-alojamientos">
+            <!-- Aquí se generarán dinámicamente los alojamientos según los filtros -->
+            <li class="alojamiento" data-destino="buenos-aires" data-tipo="hotel" data-personas="2" data-fecha="2024-05-01">
+                <h2>Alojamiento en Buenos Aires</h2>
+                <p>Descripción del alojamiento en Buenos Aires.</p>
+            </li>
+            <!-- Agrega más elementos según los destinos y alojamientos que necesites listar -->
+        </ul>
+    </main>
+
+    <script>
+        // Script para filtrar los alojamientos
+        const filtros = document.querySelectorAll('.filtro input, .filtro select');
+
+        filtros.forEach(filtro => {
+            filtro.addEventListener('change', filtrarAlojamientos);
+        });
+
+        document.getElementById('buscar').addEventListener('click', filtrarAlojamientos);
+
+        function filtrarAlojamientos() {
+            const destino = document.getElementById('destino').value.toLowerCase();
+            const tipo = document.getElementById('tipo').value.toLowerCase();
+            const personas = parseInt(document.getElementById('personas').value);
+            const fecha = document.getElementById('fecha').value;
+
+            const alojamientos = document.querySelectorAll('.alojamiento');
+
+            alojamientos.forEach(function(alojamiento) {
+                const destinoAlojamiento = alojamiento.getAttribute('data-destino').toLowerCase();
+                const tipoAlojamiento = alojamiento.getAttribute('data-tipo').toLowerCase();
+                const personasAlojamiento = parseInt(alojamiento.getAttribute('data-personas'));
+                const fechaAlojamiento = alojamiento.getAttribute('data-fecha');
+
+                if ((destino === '' || destinoAlojamiento.includes(destino)) &&
+                    (tipo === '' || tipoAlojamiento === tipo) &&
+                    (isNaN(personas) || personasAlojamiento >= personas) &&
+                    (fecha === '' || fechaAlojamiento >= fecha)) {
+                    alojamiento.style.display = 'block';
+                } else {
+                    alojamiento.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

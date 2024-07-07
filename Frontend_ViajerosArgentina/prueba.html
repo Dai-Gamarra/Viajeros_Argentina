@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Alojamientos en Argentina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            margin: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .filters, .title, .photos {
+            padding: 20px;
+        }
+        .filters {
+            flex: 1;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+        }
+        .title {
+            flex: 1;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .photos {
+            flex: 1;
+            background-color: #f8f8f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .photos img {
+            max-width: 100%;
+            margin-bottom: 10px;
+        }
+        .filters select, .filters input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="filters">
+            <h2>Filtrar destinos</h2>
+            <select id="destinationFilter">
+                <option value="">Seleccionar destino...</option>
+                <option value="mendoza">Mendoza</option>
+                <option value="cataratas">Cataratas</option>
+                <option value="bariloche">Bariloche</option>
+                <option value="villa la angostura">Villa La Angostura</option>
+            </select>
+            <select id="typeFilter">
+                <option value="">Seleccionar tipo de alojamiento...</option>
+                <option value="casa">Casa</option>
+                <option value="departamento">Departamento</option>
+                <option value="hotel">Hotel</option>
+            </select>
+            <input type="number" id="peopleFilter" placeholder="Cantidad de personas...">
+            <input type="date" id="dateFilter" placeholder="Fecha...">
+            <button onclick="filterResults()">Filtrar</button>
+        </div>
+        <div class="title">
+            <h1>Alojamientos en Argentina</h1>
+        </div>
+        <div class="photos">
+            <img src="c:\Users\Dai\Downloads\Viajeros Argentina-20240424T205445Z-001\Viajeros Argentina\static\img\Imagenes\hotel.jpg" alt="Hoteles">
+            <img src="c:\Users\Dai\Downloads\Viajeros Argentina-20240424T205445Z-001\Viajeros Argentina\static\img\Imagenes\iguazu.jpg" alt="cabañas">
+            <img src="c:\Users\Dai\Downloads\Viajeros Argentina-20240424T205445Z-001\Viajeros Argentina\static\img\Imagenes\mendoza.jpg" alt="departamentos">
+        </div>
+    </div>
+
+    <script>
+        function filterResults() {
+            const destination = document.getElementById('destinationFilter').value.toLowerCase();
+            const type = document.getElementById('typeFilter').value.toLowerCase();
+            const people = document.getElementById('peopleFilter').value;
+            const date = document.getElementById('dateFilter').value;
+            // Aquí puedes agregar el código necesario para filtrar los resultados
+            console.log('Filtrando resultados por:', destination, type, people, date);
+        }
+    </script>
+</body>
+</html>
+

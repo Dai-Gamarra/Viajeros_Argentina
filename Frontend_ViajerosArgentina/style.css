@@ -1,0 +1,77 @@
+/* html */
+
+/* ejemplo clase 
+:root{
+    --bg-color:#181419;
+    --primary-color:#9f3647;
+    --secondary-color:#ffc098;
+    --third-color: #db4648;
+    --third-bis-color: #db4648f2;
+    --bg-input-color: #4f31572c;
+    } 
+*/
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  padding: 120px 20px 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+h1{
+  color: black;
+  font-size: 3vw   
+}
+
+h2{
+  color: #fff;
+  font-size: 2vw;
+}
+    
+.banner{
+  background-image: url(static/img/banner.png)
+}
+
+.header{
+    color: black;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+    
+#barra-de-herramientas ul{
+    list-style-type: none;
+    text-align: center;
+ }  
+
+#barra-de-herramientas li{
+  display: inline;
+  text-align: center;
+  margin: 0 10px 0 0;
+}
+
+#barra-de-herramientas li a {
+  padding: 2px 7px 2px 7px;
+  color: black;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+  border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em;
+  text-decoration: none;
+}
+ 
+ #barra-de-herramientas li a:hover{
+  background-color: #333333;
+  color: #ffffff;
+}
+ 
+ 
+      
